@@ -1,29 +1,36 @@
 #include <iostream>
 
 // Node structure for the linked list
-struct Node {
+struct Node
+{
     int Data;
     Node* Next;
 };
 
 // Stack class using linked list
-class Stack {
+class Stack
+{
 private:
     Node* Top;  // Pointer to the top of the stack
 
 public:
     // Constructor to initialize the stack
-    Stack() : Top(nullptr) {}
+    Stack() : Top(nullptr)
+    {
+    }
 
     // Destructor to clean up memory
-    ~Stack() {
-        while (!IsEmpty()) {
+    ~Stack()
+    {
+        while (!IsEmpty())
+        {
             Pop();
         }
     }
 
     // Push an element onto the stack
-    void Push(int value) {
+    void Push(int value)
+    {
         Node* newNode = new Node(); // Create a new node
         newNode->Data = value; // Set the node's value
         newNode->Next = Top; // Point to the previous top node
@@ -31,8 +38,10 @@ public:
     }
 
     // Remove the top element from the stack
-    void Pop() {
-        if (IsEmpty()) {
+    void Pop()
+    {
+        if (IsEmpty())
+        {
             std::cout << "Stack is empty. Cannot pop." << std::endl;
             return;
         }
@@ -42,8 +51,10 @@ public:
     }
 
     // Return the top element of the stack
-    int GetTop() const {
-        if (IsEmpty()) {
+    int GetTop() const
+    {
+        if (IsEmpty())
+        {
             std::cerr << "Stack is empty." << std::endl;
             return -1; // Return an invalid value if the stack is empty
         }
@@ -51,14 +62,17 @@ public:
     }
 
     // Check if the stack is empty
-    bool IsEmpty() const {
+    bool IsEmpty() const
+    {
         return Top == nullptr;
     }
 
     // Print the stack elements
-    void PrintStack() const {
+    void PrintStack() const
+    {
         Node* current = Top;
-        while (current != nullptr) {
+        while (current != nullptr)
+        {
             std::cout << current->Data << " ";
             current = current->Next;
         }
@@ -66,7 +80,8 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     Stack stack;
 
     stack.Push(10);
@@ -77,9 +92,11 @@ int main() {
     std::cout << "Stack: ";
     stack.PrintStack();
 
-    if (stack.IsEmpty()) {
+    if (stack.IsEmpty())
+    {
         std::cout << "The stack is empty." << std::endl;
-    } else {
+    } else
+    {
         std::cout << "The stack is not empty." << std::endl;
     }
 
@@ -94,7 +111,8 @@ int main() {
     stack.PrintStack();
 
     stack.Pop();
-    if (stack.IsEmpty()) {
+    if (stack.IsEmpty())
+    {
         std::cout << "The stack is now empty." << std::endl;
     }
 
